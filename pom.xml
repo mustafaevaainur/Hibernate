@@ -10,7 +10,8 @@
 
 
     <properties>
-        <java-version>1.9</java-version>
+        <java-version>9</java-version>
+        <sysproperty key="log4j.debug" value="file:///${basedir}/src/resources/log4j2.xml"/>
     </properties>
 
 
@@ -50,64 +51,48 @@
         </plugins>
     </build>
 
+    <!-- JBoss repository for Hibernate -->
+    <repositories>
+        <repository>
+            <id>JBoss repository</id>
+            <url>http://repository.jboss.org/nexus/content/groups/public/</url>
+        </repository>
+    </repositories>
+
     <dependencies>
-        <!-- Hibernate -->
-        <!-- to start need only this -->
+
+        <!--LOMBOK-->
+        <dependency>
+           <groupId>org.projectlombok</groupId>
+           <artifactId>lombok</artifactId>
+           <version>LATEST</version>
+           <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.8.2</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- ORACLE JDBC driver, need install yourself -->
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc6</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>LATEST</version>
+            <version>3.6.3.Final</version>
         </dependency>
 
-        <!-- for JPA, use hibernate-entitymanager instead of hibernate-core -->
         <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-entitymanager</artifactId>
-            <version>LATEST</version>
+            <groupId>javassist</groupId>
+            <artifactId>javassist</artifactId>
+            <version>3.12.1.GA</version>
         </dependency>
-        <!--LOMBOK-->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>LATEST</version>
-            <scope>provided</scope>
-        </dependency>
-        <!-- COMMON LIBS (Log4J2 & Vavr) -->
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-slf4j-impl</artifactId>
-            <version>LATEST</version>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>io.vavr</groupId>
-            <artifactId>vavr</artifactId>
-            <version>LATEST</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>19.0</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.ws.rs</groupId>
-            <artifactId>javax.ws.rs-api</artifactId>
-            <version>2.0.1</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.ws.rs</groupId>
-            <artifactId>javax.ws.rs-api</artifactId>
-            <version>2.0.1</version>
-        </dependency>
-        <dependency>
-            <groupId>dom4j</groupId>
-            <artifactId>dom4j</artifactId>
-            <version>1.1</version>
-        </dependency>
-        <dependency>
-            <groupId>xerces</groupId>
-            <artifactId>xercesImpl</artifactId>
-            <version>2.9.1</version>
-        </dependency>
+
     </dependencies>
 </project>
